@@ -1,8 +1,9 @@
 /*
 //Declare Modules
 */
-mod crypto_publisher_7; 
+mod event;
+mod crypto_publisher; 
 fn main() {
-    crypto_publisher_7::crypto_publisher();
+    crypto_publisher::crypto_publisher();
 }
 // */
