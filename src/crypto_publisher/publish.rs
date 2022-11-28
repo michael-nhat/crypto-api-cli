@@ -1,13 +1,12 @@
-use rdkafka::config::ClientConfig;
-use rdkafka::producer::{FutureProducer, FutureRecord};
-use rdkafka::message::OwnedHeaders;
 use log::info;
+use rdkafka::config::ClientConfig;
+use rdkafka::message::OwnedHeaders;
+use rdkafka::producer::{FutureProducer, FutureRecord};
 
-use std:: time::Duration;
+use std::time::Duration;
 
 #[tokio::main]
 pub async fn publish(broker: &str, topic: &str, pub_message: &str, count: i32) {
-    
     let producer: &FutureProducer = &ClientConfig::new()
         .set("bootstrap.servers", broker)
         .set("message.timeout.ms", "5000")
@@ -15,21 +14,23 @@ pub async fn publish(broker: &str, topic: &str, pub_message: &str, count: i32) {
         .create()
         .expect("Failed to create producer");
 
-        let payload = format!("message {}", pub_message);
-        let key = format!("key {}", count);
+    let payload = format!("message {}", pub_message);
+    let key = format!("key {}", count);
 
-        info!("Sending message '{}'", count);
+    info!("Sending message '{}'", count);
 
-        let status = producer.send(
+    let status = producer
+        .send(
             FutureRecord::to(topic)
                 .payload(&payload)
                 .key(&key)
                 .headers(OwnedHeaders::new().add(
                     &format!("header_key_{}", count),
-                    &format!("header_value_{}", count)
+                    &format!("header_value_{}", count),
                 )),
-            Duration::from_secs(0)
-        ).await;
+            Duration::from_secs(0),
+        )
+        .await;
 
-        info!("Status '{:?}' received from message '{}'", status, count);
+    info!("Status '{:?}' received from message '{}'", status, count);
 }

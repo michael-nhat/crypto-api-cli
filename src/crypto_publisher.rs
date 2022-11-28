@@ -16,10 +16,10 @@ use rdkafka::util::get_rdkafka_version;
 mod publish;
 use publish::publish;
 mod coin_struct;
-use coin_struct::{ CryptoPrice, CryptoPriceData};
+use coin_struct::{CryptoPrice, CryptoPriceData};
 
-mod request;
 mod cli;
+mod request;
 use cli::Cli;
 pub use request::{get_coin_price, get_coin_time};
 

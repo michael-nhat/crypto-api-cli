@@ -1,8 +1,7 @@
-
-use serde::{Serialize, Deserialize};
+use serde::{Deserialize, Serialize};
 #[derive(Deserialize, Debug)]
 pub struct CoinbasePrice {
-    pub data: CoinPrice
+    pub data: CoinPrice,
 }
 
 #[derive(Deserialize, Debug)]
@@ -14,18 +13,18 @@ pub struct CoinPrice {
 
 #[derive(Deserialize, Debug)]
 pub struct CoinbaseTime {
-    pub data: CoinTime
+    pub data: CoinTime,
 }
 
 #[derive(Deserialize, Debug)]
 pub struct CoinTime {
     pub iso: String,
-    pub epoch: i64,    
+    pub epoch: i64,
 }
 
 #[derive(Serialize, Debug)]
 pub struct CryptoPriceData {
-    pub data: CryptoPrice
+    pub data: CryptoPrice,
 }
 
 #[derive(Serialize, Debug)]
