@@ -3,6 +3,7 @@ extern crate serde;
 extern crate reqwest;
 
 extern crate clap;
+
 use clap::Parser;
 
 use log::info;
@@ -18,34 +19,9 @@ mod coin_struct;
 use coin_struct::{ CryptoPrice, CryptoPriceData};
 
 mod request;
-use request::{get_coin_price, get_coin_time};
-
-#[derive(Parser, Debug)]
-#[clap(
-    author,
-    version = "0.1.0",
-    about = "Crypto Price Publisher - Command Line Interface (CLI) Application"
-)]
-struct Cli {
-    /// Currency Symbol. An example would be BTC.
-    #[clap(short, long, default_value = "BTC")]
-    currency: String,
-    #[clap(short, long, default_value = "USD")]
-    /// Rates Symbol. An example would be USD.
-    rates: String,
-    #[clap(short, long, default_value = "30000")]
-    /// Interval. An example would be an interval of 30000 miliseconds or 30 seconds.
-    interval: u64,
-    #[clap(short, long, default_value = "10")]
-    /// Repeat Frequency. An example would be repeat frequency of 10 times.
-    frequency: i32,
-    #[clap(short, long, default_value = "localhost:9092")]
-    /// Broker.
-    broker: String,
-    #[clap(short, long, default_value = "crypto_price")]
-    /// Topic Name.
-    topic: String,
-}
+mod cli;
+use cli::Cli;
+pub use request::{get_coin_price, get_coin_time};
 
 pub fn crypto_publisher() {
     let args = Cli::parse();
