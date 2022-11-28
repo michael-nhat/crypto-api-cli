@@ -1,0 +1,22 @@
+{
+  "name": "crypto-publisher",
+  "version": "1.0.0",
+  "description": "This app is for learn Rust from post https://sungkim11.medium.com/learn-rust-by-example-develop-crypto-publisher-cli-application-be5af17e03ae https://medium.com/geekculture/learn-rust-by-example-develop-crypto-publisher-apache-kafka-application-16b22ab88199",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install": "cargo install --path=./",
+    "run": "RUST_BACKTRACE=FULL cargo run -- --interval 1000 --currency BTC --rates GBP --frequency 5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sungkim11/crypto-publisher.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sungkim11/crypto-publisher/issues"
+  },
+  "homepage": "https://github.com/sungkim11/crypto-publisher#readme"
+}
