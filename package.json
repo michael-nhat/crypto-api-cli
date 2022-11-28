@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "install": "cargo install --path=./",
-    "run": "RUST_BACKTRACE=FULL cargo run -- --interval 1000 --currency BTC --rates GBP --frequency 5"
+    "run": "RUST_BACKTRACE=FULL cargo run -- --interval 1000 --currency BTC --rates GBP --frequency 5",
+    "format": "rustfmt ./src/**/*.rs --edition 2021"
   },
   "repository": {
     "type": "git",
